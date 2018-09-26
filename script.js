@@ -1,40 +1,11 @@
-var css = document.querySelector("h3");
+var gradientStyle = document.getElementById("direction");
 var color1 = document.querySelector(".color1");
 var color2 = document.querySelector(".color2");
 var body = document.getElementById("gradient");
-var button = document.querySelector(".button");
+var textPut = document.getElementById("cssText");
 
-function setGradient() {
-	body.style.background = 
-	"linear-gradient(to right, " 
-	+ color1.value 
-	+ ", " 
-	+ color2.value 
-	+ ")";
 
-	css.textContent = body.style.background + ";";
-}
-
-function getRandomColor() {
-  var hue = 'rgb(' + (Math.floor(Math.random() * 256)) 
-  + ',' + (Math.floor(Math.random() * 256)) + ',' 
-  + (Math.floor(Math.random() * 256)) + ')';
-  console.log(hue);
-  return hue;
-}
-
-function setRandomColor() {
-	color1 = getRandomColor();
-	color2 = getRandomColor();
-  body.style.background = 
-	"linear-gradient(to right, " 
-	+ color1
-	+ ", " 
-	+ color2
-	+ ")";
-
-	css.textContent = body.style.background + ";";
-}
+direction.addEventListener("input", setGradient);
 
 color1.addEventListener("input", setGradient);
 
@@ -42,4 +13,30 @@ color2.addEventListener("input", setGradient);
 
 body.addEventListener("onload", setGradient);
 
-button.addEventListener("click", setRandomColor);
+document.getElementById("randomize").addEventListener("click", setRandomColor);
+
+
+function setGradient() {
+	body.style.background = 
+	gradientStyle.value + color1.value + ", " + color2.value + ")";
+
+	textPut.textContent = body.style.background + ";";
+}
+
+function getRandomColor() {
+  var hue = "#" + convertToHex(Math.floor(Math.random() * 256)) 
+  			+ convertToHex(Math.floor(Math.random() * 256)) +
+  			convertToHex(Math.floor(Math.random() * 256));
+  return hue;
+}
+
+function setRandomColor() {
+	color1.value = getRandomColor();
+	color2.value = getRandomColor();
+	setGradient();
+}
+
+function convertToHex(color) {
+	var hexCode = color.toString(16);
+	return hexCode.length == 1? "0" + hexCode : hexCode;
+}

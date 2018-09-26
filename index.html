@@ -6,11 +6,20 @@
 </head>
 <body onload="setGradient()" id="gradient">
 	<h1>Background Generator</h1>
+	<select id="direction" name="direction" placeholder="linear-gradient(left to right)">
+		<option value="linear-gradient(to right, ">linear-gradient(left to right)</option>
+		<option value="linear-gradient(to left, ">linear-gradient(right to left)</option>
+		<option value="linear-gradient(">linear-gradient(top to bottom)</option>
+		<option value="linear-gradient(to top, ">linear-gradient(bottom to top)</option>
+		<option value="linear-gradient(to bottom right, ">linear-gradient(right diagonal)</option>
+		<option value="linear-gradient(to bottom left, ">linear-gradient(left diagonal)</option>
+		<option value="radial-gradient(">radial-gradient</option>
+	</select>
 	<input class="color1" type="color" name="color1" value="#ffffff">
 	<input class="color2" type="color" name="color2" value="#000000">
-	<button class="button" type="button">Randomize Colors</button>
-	<h2>Current CSS Background</h2>
-	<h3></h3>
+	<button class="button" type="button" id="randomize">Randomize Colors</button>
+	<h2>Current CSS Background:</h2>
+	<h3 id="cssText"></h3>
 	<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
